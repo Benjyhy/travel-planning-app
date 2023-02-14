@@ -1,0 +1,23 @@
+name: CI
+on: [push]
+jobs:
+    eslint:
+        name: Lint code base
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: Install packages
+              run: npm i
+            - name: Run ESLint
+              run: npm run lint
+    test:
+        name: Test with jest
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: Install modules
+              run: npm i
+            - name: Run tests
+              run: npm run test:ci
